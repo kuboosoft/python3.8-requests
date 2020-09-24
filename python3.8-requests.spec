@@ -3,7 +3,7 @@
 
 Name:           python3.8-requests
 Version:        2.23.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        HTTP library, written in Python, for human beings
 
 License:        ASL 2.0
@@ -37,20 +37,22 @@ cp -rf .local/lib/python3.8/site-packages/* %{buildroot}/usr/lib/python3.8/site-
 cp -f .local/bin/chardetect %{buildroot}/usr/bin/chardetect3.8
 cp -f .local/bin/pygmentize %{buildroot}/usr/bin/pygmentize3.8
 
+find -depth -type f -writable -name "*.py" -exec sed -iE '1s=^#! */usr/bin/\(python\|env python\)[23]\?=#!/usr/bin/python3.8=' {} +
+
 %files
 /usr/bin/chardetect3.8
 /usr/bin/pygmentize3.8
-/usr/lib/python3.8/site-packages/Pygments-2.6.1.dist-info/
+/usr/lib/python3.8/site-packages/Pygments-*.dist-info/
 /usr/lib/python3.8/site-packages/pygments/
-/usr/lib/python3.8/site-packages/certifi-2020.4.5.2.dist-info/
+/usr/lib/python3.8/site-packages/certifi-*.dist-info/
 /usr/lib/python3.8/site-packages/certifi/
 /usr/lib/python3.8/site-packages/chardet-3.0.4.dist-info/
 /usr/lib/python3.8/site-packages/chardet/
-/usr/lib/python3.8/site-packages/idna-2.9.dist-info/
+/usr/lib/python3.8/site-packages/idna-*.dist-info/
 /usr/lib/python3.8/site-packages/idna/
 /usr/lib/python3.8/site-packages/requests-2.23.0.dist-info/
 /usr/lib/python3.8/site-packages/requests/
-/usr/lib/python3.8/site-packages/urllib3-1.25.9.dist-info/
+/usr/lib/python3.8/site-packages/urllib3-*.dist-info/
 /usr/lib/python3.8/site-packages/urllib3/
 
 
